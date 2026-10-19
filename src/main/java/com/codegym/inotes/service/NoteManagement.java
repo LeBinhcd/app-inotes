@@ -1,0 +1,3 @@
+package com.codegym.inotes.service;
+import com.codegym.inotes.model.Note; import com.codegym.inotes.strategy.NoteStrategy; import java.io.IOException; import java.util.List;
+public class NoteManagement { private NoteStrategy strategy; public NoteManagement(NoteStrategy strategy){this.strategy=strategy;} public void setStrategy(NoteStrategy strategy){this.strategy=strategy;} public List<Note> searchNotes(String keyword)throws IOException{return strategy.search(keyword);} public void addNote(String title,String content,int typeId)throws IOException{strategy.save(new Note(0,title,content,typeId));} public void deleteNote(int id)throws IOException{strategy.delete(id);} public List<Note> findAll()throws IOException{return strategy.findAll();} }
